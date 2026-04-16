@@ -1,8 +1,20 @@
-class Product:
+from models.item import Item
+class Product(Item):
     
     # Constructor to initialize the product attributes
-    def __init__(self, name, price, description, stock):
-        self.name = name
-        self.price = price
-        self.description = description
-        self.stock = stock
+    def __init__(self, new_name, new_price, new_description, new_stock):
+        super().__init__(new_name, new_price, new_description)
+        self.set_stock(new_stock)
+
+    # Getter for the product stock
+    def get_stock(self):
+        return self._stock
+    
+    # Setter for the product stock
+    def set_stock(self, new_stock):
+        if(new_stock >= 0):
+            self._stock = new_stock
+        else:
+            print("The stock cannot be negative")
+
+    
