@@ -31,3 +31,7 @@ class Item:
     # Describe method
     def describe(self):
         return (f"Item: {self.get_name()}, price: {self.get_price()}")
+    
+    # Calculte total
+    def calculate_total(self):
+        return self.get_price()

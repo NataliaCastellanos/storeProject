@@ -21,3 +21,7 @@ class Service(Item):
     # Describe method
     def describe(self):
         return (f"Service: {self.get_name()}, price: {self.get_price()}, duration: {self.get_duration()}")
+    
+    # Calculte total
+    def calculate_total(self):
+        return self.get_price() * self.get_duration()

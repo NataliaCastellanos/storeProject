@@ -61,14 +61,6 @@ print(f"Duración: {service3.get_duration()}")
 
 #------------------------------------------------------------
 
-# Client instances
-client1 = Client("John", "Doe", "john.doe@example.com", "password123", 0) 
-print("\nCliente 1")
-print(f"Nombre: {client1.get_name()} {client1.get_last_name()}")
-print(f"Email: {client1.get_email()}")
-print(f"Puntos de lealtad: {client1.get_loyalty_points()}\n")
-
-
 # Catalog
 
 catalag=[
@@ -77,9 +69,10 @@ catalag=[
     Service("Cleaning", 15000, "Professional cleaning service", 20)#2
 ]
 
-print("Catalog")
+print("Catalog \n")
 for item in catalag:
-    print(item.describe())
+    print(f"{item.describe()}")
+    print(f"Total: {item.calculate_total()} \n")
 
 #Users
 users= [
@@ -89,4 +82,24 @@ users= [
 
 print("\nUsers")
 for user in users:
-    print(user.show_info())
+    print(f"\n{user.show_info()}")
+    print(f"Role: {user.get_role()}")
+
+# Client instances
+client1 = Client("John", "Doe", "john.doe@example.com", "password123", 0) 
+
+# employee
+employee1 = Employee("Pedro", "Arias", "pedro@gmail.com", "pass123", 2000000)
+
+print("\n LOGIN")
+# correct login
+print(client1.login("john.doe@example.com", "password123"))
+
+# incorrect login
+print(client1.login("john.doe@example.com", "password"))
+print(client1.login("john.doe@example.", "password123"))
+
+# correct login
+print(employee1.login("pedro@gmail.com", "pass123"))
+#incorrect login
+print(employee1.login("ped@gmail.com", "pass123"))

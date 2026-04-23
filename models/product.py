@@ -21,3 +21,6 @@ class Product(Item):
     def describe(self):
         return (f"Product: {self.get_name()}, price: {self.get_price()}, stock: {self.get_stock()}")
     
+    # Calculte total
+    def calculate_total(self):
+        return self.get_price() * self.get_stock()

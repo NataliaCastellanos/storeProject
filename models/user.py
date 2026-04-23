@@ -54,3 +54,15 @@ class User:
     def show_info(self):
         return(f"Name: {self.get_name()} {self.get_last_name()} \n"
                f"Email: {self.get_email()}")
+    
+    # Get role
+    def get_role(self):
+        return "User"
+    
+    # Login
+    def login(self, email, password):
+        if( self.get_email() == email and self.get_password() == password):
+            return (f"{self.get_role()} bienvenido")
+        else:
+            return ("Invalid credetials")
+        
