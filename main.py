@@ -2,6 +2,7 @@ from models.product import Product
 from models.service import Service
 from models.client import Client
 from models.employee import Employee
+from models.item import Item
 
 # Create a product instance
 product1 = Product("Leche", 3500, "Leche entera de vaca", 100)
@@ -65,4 +66,27 @@ client1 = Client("John", "Doe", "john.doe@example.com", "password123", 0)
 print("\nCliente 1")
 print(f"Nombre: {client1.get_name()} {client1.get_last_name()}")
 print(f"Email: {client1.get_email()}")
-print(f"Puntos de lealtad: {client1.get_loyalty_points()}")
+print(f"Puntos de lealtad: {client1.get_loyalty_points()}\n")
+
+
+# Catalog
+
+catalag=[
+    Product("Leche", 3500, "Leche entera de vaca", 100), #0
+    Product("Pan", 1500, "Pan integral de caja", 50), #1
+    Service("Cleaning", 15000, "Professional cleaning service", 20)#2
+]
+
+print("Catalog")
+for item in catalag:
+    print(item.describe())
+
+#Users
+users= [
+    Client("John", "Doe", "john.doe@example.com", "password123", 0),
+    Employee("Pedro", "Arias", "pedro@gmail.com", "pass123", 2000000)
+]
+
+print("\nUsers")
+for user in users:
+    print(user.show_info())

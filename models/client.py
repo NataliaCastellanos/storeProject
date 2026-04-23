@@ -16,3 +16,9 @@ class Client(User):
             self._loyalty_points = new_loyalty_points
         else:
             print("The loyalty points cannot be negative")
+    
+    # Show_info
+    def show_info(self):
+        return(f"Name: {self.get_name()} {self.get_last_name()} \n"
+               f"Email: {self.get_email()} \n"
+               f"Loyalty points: {self.get_loyalty_points()} \n")

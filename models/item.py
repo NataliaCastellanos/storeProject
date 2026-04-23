@@ -27,3 +27,7 @@ class Item:
             self._price = new_price
         else:
             print("The price must be greater than 0")
+
+    # Describe method
+    def describe(self):
+        return (f"Item: {self.get_name()}, price: {self.get_price()}")

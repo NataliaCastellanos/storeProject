@@ -49,3 +49,8 @@ class User:
             self._password = new_password
         else:
             print("The user password cannot be empty")
+
+    # Show_info
+    def show_info(self):
+        return(f"Name: {self.get_name()} {self.get_last_name()} \n"
+               f"Email: {self.get_email()}")

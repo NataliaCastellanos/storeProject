@@ -16,3 +16,9 @@ class Employee(User):
             self._salary = new_salary
         else:
             print("The salary must be greater than 0")
+
+    # Show_info
+    def show_info(self):
+        return(f"Name: {self.get_name()} {self.get_last_name()} \n"
+               f"Email: {self.get_email()} \n"
+               f"Salary: {self.get_salary()} \n")

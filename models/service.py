@@ -17,3 +17,7 @@ class Service(Item):
             self._duration = new_duration
         else:
             print("The duration must be greater than 0")
+
+    # Describe method
+    def describe(self):
+        return (f"Service: {self.get_name()}, price: {self.get_price()}, duration: {self.get_duration()}")

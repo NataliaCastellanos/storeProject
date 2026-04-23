@@ -17,4 +17,7 @@ class Product(Item):
         else:
             print("The stock cannot be negative")
 
+    # Describe method
+    def describe(self):
+        return (f"Product: {self.get_name()}, price: {self.get_price()}, stock: {self.get_stock()}")
     
