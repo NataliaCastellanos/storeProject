@@ -1,37 +1,33 @@
 from models.user import User
+class Employee(User):
 
-class Employee(User): 
-    # Constructor for the Employee class
     def __init__(self, new_name, new_last_name, new_email, new_password, new_salary):
         super().__init__(new_name, new_last_name, new_email, new_password)
         self.set_salary(new_salary)
 
-    # Getter for the employee salary
+    # Getter for salary
     def get_salary(self):
         return self._salary
     
-    # Setter for the employee salary
+    #Setter for salary
     def set_salary(self, new_salary):
         if(new_salary > 0):
             self._salary = new_salary
-        else:
-            print("The salary must be greater than 0")
+        else: 
+            print("The salary must be greate than 0")
 
-    # Show_info
-    def show_info(self):
-        return(f"Name: {self.get_name()} {self.get_last_name()} \n"
-               f"Email: {self.get_email()} \n"
-               f"Salary: {self.get_salary()}")
-    
-    # Get role
+    #Get role
     def get_role(self):
-        return "Employee"
+        return ("Employee")
     
+    #Show_info
+    def show_info(self):
+        return (f"Name: {self.get_name()}, Last Name: {self.get_last_name()}, Email: {self.get_email()}, Role: {self.get_role()}, Salary: {self.get_salary()}")
+        
     # Login
     def login(self, email, password):
-        if( self.get_email() == email and self.get_password() == password):
-            return (f"{self.get_role()} bienvenido")
+        if(self._email == email and self._password == password):
+            return (f"Welcome, {self.get_role()} {self.get_name()}. You can access to users module")
         else:
-            return ("Invalid credetials for this employee")
-        
+            return (f"Invalid credentials for {self.get_role()}")
     
