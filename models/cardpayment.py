@@ -1,6 +1,6 @@
 from models.paymentmethod import PaymentMethod
 
-class CardPeryment(PaymentMethod):
+class CardPayment(PaymentMethod):
 
     # Constructor
     def __init__(self, new_amount, new_card_number):
