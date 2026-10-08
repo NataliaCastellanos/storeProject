@@ -26,4 +26,4 @@ class Item:
             raise ValueError("El precio del producto no puede ser 0 o negativo")
         
     def show_info(self):
-        return f"{self.get_name()} - Descripción: {self.description} - Precio: {self.get_price()}"
+        return f"Nombre: {self.get_name()} - Descripción: {self.description} - Precio: {self.get_price()}"
