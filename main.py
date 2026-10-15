@@ -16,6 +16,7 @@
 ## --------------------------------------------------------
 
 from controllers.item_controller import ItemController
+from controllers.user_controller import UserController
 
 ## show items crea una copia del array original, 
 # verifica que tenga elementos y 
@@ -31,17 +32,34 @@ def show_items(item_controller):
     for item in items:
         print(item.show_info())    
 
+# show users crea una copia del array original
+# verifica existencias de usuarios
+# recorre la lista y muestra la información de cada uno
+def show_users(user_controller):
+    users = user_controller.get_users()
+
+    if not users:
+        print("No existen usuarios registrados")
+        return
+
+    for user in users:
+        print(user.show_info())
+
 ##--------------------------------------------------------
-## main es la función principal
+## main es la función principal, contiene el menú y las acciones correspondientes a cada opción
 def main():
     item_controller = ItemController()
+    user_controller = UserController()
 
     while True:
         print("\n Opciones")
         print("1. Agregar producto")
         print("2. Agregar servicio")
         print("3. Mostrar artículos")
-        print("4. Salir")
+        print("4. Agregar empleado")
+        print("5. Agregar cliente")
+        print("6. Mostrar usuarios")
+        print("7. Salir")
 
         option = input("Selecciona una opción: ")
 
@@ -68,6 +86,29 @@ def main():
                 show_items(item_controller)
 
             case "4":
+                name = input("Ingresa el nombre del empleado: ")
+                lastName = input("Ingresa el apellido del empleado: ")
+                email = input("Ingresa el email del empleado: ")
+                password = input("Ingresa el password: ")
+                salary = float(input("Ingresa el salario asignado: "))
+
+                user_controller.add_employee(name, lastName, email, password, salary)
+                print("Empleado agregado con éxito.")
+
+            case "5":
+                name = input("Ingresa el nombre del cliente: ")
+                lastName = input("Ingresa el apellido del cliente: ")
+                email = input("Ingresa el email del cliente: ")
+                password = input("Ingresa el password: ")
+                loyaltyPoints = int(input("Ingresa los puntos acumulados: "))
+
+                user_controller.add_client(name, lastName, email, password, loyaltyPoints)
+                print("Cliente agregado con éxito.")
+
+            case "6": 
+                show_users(user_controller)
+                
+            case "7":
                 print("Vuelve pronto")
                 break
 

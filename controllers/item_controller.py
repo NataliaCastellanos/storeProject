@@ -1,4 +1,4 @@
-from models.item import Item
+# from models.item import Item
 from models.product import Product
 from models.service import Service
 class ItemController:
@@ -6,9 +6,9 @@ class ItemController:
     def __init__(self):
         self.items = []
 
-    def add_item(self, name, description, price):
-        item = Item(name, description, price)
-        self.items.append(item)
+    # def add_item(self, name, description, price):
+    #     item = Item(name, description, price)
+    #     self.items.append(item)
 
     def add_product(self, name, description, price, stock):
         product = Product(name, description, price, stock)
