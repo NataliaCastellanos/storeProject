@@ -17,7 +17,8 @@
 
 from controllers.item_controller import ItemController
 from controllers.user_controller import UserController
-
+from controllers.sale_controller import SaleController
+from models.sale import Sale
 ## show items crea una copia del array original, 
 # verifica que tenga elementos y 
 # muestra la información de cada uno
@@ -45,11 +46,92 @@ def show_users(user_controller):
     for user in users:
         print(user.show_info())
 
+#Método para agregar artículos.
+def add_items(item_controller, sale_controller, sale):
+
+    items = item_controller.get_items()
+    
+    if not items:
+        print("No existen artículos registrados")
+        return
+
+    for item in items:
+        print(item.show_info())
+
+    selected_item = input("Ingresa el nombre del artículo")
+
+    for item in items:
+        if item.get_name() == selected_item:
+            quantity = int(input("Indica la cantidad: "))
+            sale_controller.add_item(sale, item, quantity)
+            print("Artículo agregado")
+            return
+
+    print("Artículo no encontrado")
+
+## Método para agregar usuario
+def add_user(user_controller, sale_controller, sale):
+    users = user_controller.get_users()
+    
+    if not users:
+        print("No existen usuarios registrados")
+        return
+
+    for user in users:
+        print(user.show_info())
+
+    selected_user = input("Ingresa el email del usuario")
+
+    for user in users:
+        if user.get_email() == selected_user:
+            sale_controller.add_user(user, sale)
+            print("Usuario agregado")
+            return
+        
+    print("Usuario no encontrado")
+
+def sale_menu(item_controller, user_controller, sale_controller): 
+    sale = Sale()
+
+    while True:
+        print("\n Nueva venta")
+        print("1. Agregar artículo")
+        print("2. Agregar usuario")
+        print("3. Mostrar venta")
+        print("4. Salir")
+
+        option = input("Selecciona una opción: ")
+
+        match option:
+            case "1": 
+               add_items(item_controller, sale_controller, sale)
+
+            case "2":
+                add_user(user_controller, sale_controller, sale)
+
+            case "3":
+                if not sale.get_details():
+                    print("Debes agregar al menos un artículo")
+                    continue
+
+                if sale.get_user() is None:
+                    print("Debes agregar un usuario")
+
+                sale_controller.add_sale(sale)
+                print ("Venta registrada")
+                print (sale.show_info())
+                return 
+
+            case "4":
+                print("Venta cancelada")
+                return        
+
 ##--------------------------------------------------------
 ## main es la función principal, contiene el menú y las acciones correspondientes a cada opción
 def main():
     item_controller = ItemController()
     user_controller = UserController()
+    sale_controller = SaleController()
 
     while True:
         print("\n Opciones")
@@ -59,7 +141,8 @@ def main():
         print("4. Agregar empleado")
         print("5. Agregar cliente")
         print("6. Mostrar usuarios")
-        print("7. Salir")
+        print("7. Registrar venta")
+        print("8. Salir")
 
         option = input("Selecciona una opción: ")
 
@@ -107,8 +190,11 @@ def main():
 
             case "6": 
                 show_users(user_controller)
-                
-            case "7":
+
+            case "7": 
+                sale_menu(item_controller, user_controller, sale_controller)
+
+            case "8":
                 print("Vuelve pronto")
                 break
 
